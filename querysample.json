@@ -1,0 +1,17 @@
+{
+    "explain": true, 
+    "query":{
+      "bool":{
+        "must": {
+          "multi_match": {
+            "query":"TSLintのimportエラーで困ってます",
+            "fields":["title","content","transcript"]
+          }
+        },
+        "filter": [
+          {"term":{"category":"5"}},
+          {"term":{"topicStatus": "Resolved"}}
+        ]
+      }
+    }
+  }
