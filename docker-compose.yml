@@ -1,0 +1,15 @@
+version: '2'
+services:
+  elasticesarch:
+    build: ./ # 後述のDockerfileを参照
+    container_name: elasticsearch
+    restart: always
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "discovery.type=single-node"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.6.2
+    ports:
+      - "5601:5601"

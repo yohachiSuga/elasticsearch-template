@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "menty_kuromoji_analyzer": {
+            "type": "custom",
+            "char_filter" : ["icu_normalizer", "kuromoji_iteration_mark"],
+            "tokenizer": "kuromoji_tokenizer",
+            "filter": ["kuromoji_baseform", "kuromoji_part_of_speech","ja_stop","kuromoji_number", "kuromoji_stemmer"]
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "topicStatus":{
+        "type":"keyword"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "menty_kuromoji_analyzer"
+      },
+      "content": {
+        "type": "text",
+        "analyzer": "menty_kuromoji_analyzer"
+      },
+      "transcript": {
+        "type": "text",
+        "analyzer": "menty_kuromoji_analyzer"
+      }
+    }
+  }
+}
